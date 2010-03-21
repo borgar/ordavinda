@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html lang="is">
+<head>
+
+  <title>Orðavinda - orðaleikur</title>
+
+  <meta charset=utf-8 />
+  <meta name="title" content="Orðavinda" />
+  <meta name="description" content="Orðavinda er einfaldur orðaleikur. Markmið leiksins er að reyna að mynda sem flest orð úr 6 stafa setti áður en tíminn rennur út." />
+
+  <link rel="image_src" href="http://borgar.net/programs/ordavinda/thumbnail.png" />
+  <link rel="stylesheet" type="text/css" href="game.css" />
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+  <script src="utils.js"></script>
+  <script src="vinda.js"></script>
+
+  <!-- 
+  ** Sound requires http://www.schillmania.com/projects/soundmanager2/ **
+    <script src="jquery.cookie.js"></script>
+    <script src="soundmanager2.js"></script>
+    <script src="vinda.sounds.js"></script>
+  -->
+
+</head>
+<body class="">
+<div id="top">
+
+  <h1><a href=".">Orðavinda</a></h1>
+
+  <noscript>
+    <p class="error">Þú þarft JavaScript til þess að spila leikinn.</p>
+    <hr>
+  </noscript>
+
+  <div id="game" style="display:none">
+
+    <div class="stats">
+      <div id="score">
+        <span>Stig:</span>
+        <strong></strong>
+      </div>
+      <div id="time">
+        <span>Tími:</span>
+        <em class="">-:--</em>
+      </div>
+    </div>
+
+    <div id="message"><strong></strong></div>
+
+    <form action="" method="get" id="tray">
+      <input id="inp" type="text" value="" autocomplete="off" />
+    </form>
+    
+    <div id="letters">
+      <a href="#" class="char" id="l1"><b></b></a>
+      <a href="#" class="char" id="l2"><b></b></a>
+      <a href="#" class="char" id="l3"><b></b></a>
+      <a href="#" class="char" id="l4"><b></b></a>
+      <a href="#" class="char" id="l5"><b></b></a>
+      <a href="#" class="char" id="l6"><b></b></a>
+    </div>
+    
+    <div id="buttons">
+      <button id="word_shuffle" title="Rugla stöfum (space)">Vinda</button>
+      <button id="word_enter"   title="Nota orð (enter)">Nota</button>
+      <button id="word_recall"  title="Rugla stöfum (enter)">Endurkalla</button>
+      <button id="word_clear"   title="Rugla stöfum (escape)">Hreinsa</button>
+    </div>
+
+    <div id="board">      
+      <ul class="l3"></ul>
+      <ul class="l4"></ul>
+      <ul class="l5"></ul>
+      <ul class="l6"></ul>
+    </div>
+    
+    <div id="gameover" style="display:none">
+      <a href="." class="message">
+        <span>Leik lokið!</span>
+        <em>Smelltu hér til þess að reyna aftur...</em>
+      </a>
+      <div class="mask"></div>
+    </div>
+    
+    <div id="leveldone" style="display:none">
+      <a href="#" class="message">
+        <span>Borð sigrað!</span>
+        <em>Smelltu hér til þess að spila næsta...</em>
+      </a>
+      <div class="mask"></div>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <a id="gethelp" href="#help">Hvernig spila ég?</a>
+  <div id="help">
+    <div class="wrap">
+      <h2>Leikreglur</h2>
+
+      <p>Markmið leiksins er að reyna að mynda sem flest orð úr einföldu stafasetti
+		     áður en tíminn rennur út.</p>
+
+	    <p>Til þess að komast í næsta borð, og fá að halda áfram að safna stigum, verður 
+		     þú að ná að mynda að minnsta kosti eitt 3 stafa orð.</p>
+		
+	    <p>Möguleg orð sem hægt er að mynda úr stöfunum eru sýnd fyrir neðan leiksvæðið. 
+		     Þegar rétt orð er valið er það afhjúpað á sínum stað í orðalistanum.</p>
+		
+	    <p>Hægt er að stjórna leiknum með bæði mús og lyklaborði. 
+		     Lyklaborðvirknin, fyrir utan stafina sjálfa, er eftirfarandi:</p>
+	
+	    <ul>
+		    <li><strong>enter</strong> &mdash; velur orð þegar það er til staðar, 
+		    		en endurkallar síðasta orð ef engin stafur er valinn.</li>
+		    <li><strong>esc</strong> &mdash; hreinsa orð</li>
+		    <li><strong>space</strong> &mdash; vinda / endurraða stöfum í orði</li>
+	    </ul>
+
+      <p><a href="#close" class="button">Ok, ég held að ég muni þetta.</a></p>
+    </div>
+  </div>
+
+  <div class="footer">
+  	<div id="social">
+  		<a id="facebook" name="fb_share" type="button" href="http://www.facebook.com/sharer.php" rel="nofollow">Deila á FaceBook</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
+  		<a id="twitter" href="http://twitter.com/home?status=Er að spila http://tinyurl.com/ordavinda" target="_blank" rel="nofollow"><img src="http://twitter-badges.s3.amazonaws.com/t_mini-c.png">Deila á Twitter</a>
+  	</div>
+	  <hr>
+    <p>Leikurinn er skrifaður sem innlegg í samkeppninni "<a href="http://ordid.is">Þú átt orðið</a>". 
+      Höfundur er <a href="http://borgar.net">Borgar Þorsteinsson</a>. 
+      Leikurinn styðst við orðasafn <a href="http://bin.arnastofnun.is/">Beygingarlýsingar íslensks nútímamáls</a> (BÍN).
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
