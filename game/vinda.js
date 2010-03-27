@@ -460,11 +460,11 @@ jQuery(function($){
       inp.focus();
       return false;
     }
-    if ( k === 8 || k === 13 ) {  // backspace, enter 
-      return true;
+    if ( k === 8 || k === 13 || k === 46 ) {  // backspace, enter 
+      return;
     }
     if ( k === 40 || k === 39 || k === 38 || k === 37 ) {  // arrows
-      return true;
+      return;
     }
     if ( /^[a-záéíóúýþæðö´]$/i.test( ch ) ) {
       return $.inArray( ch.toLowerCase(), unusedLetters() ) !== -1;
