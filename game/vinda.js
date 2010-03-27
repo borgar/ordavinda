@@ -475,18 +475,28 @@ jQuery(function($){
 
   inp.bind('keyup', function ( e ) {
     if ( e.metaKey || e.altKey || e.ctrlKey ) { return; }
-    var w  = e.which, ch = String.fromCharCode( w );
-
+    var w  = e.which, k = e.keyCode, ch = String.fromCharCode( w );
     // because "´p" or pastes can happen, we need to clean the input first
-    var keyword = wordizeLetters(), m = '';
+    var keyword = wordizeLetters(),
+        m = '';
     for (var i=0; i<this.value.length; i++) {
       var ch = this.value.charAt( i );
       if ( keyword.indexOf( ch ) !== -1 ) {
         keyword = keyword.replace( ch, '' );
         m += ch;
       }
+      else if ( ch === '´' && i === this.value.length - 1 ) {
+        // allow hanging accents, needed for WebKit
+        m += ch;
+      }
     }
-    var word = this.value = m;
+    
+    // browsers may move the caret if value gets written
+    // so this needs to be done only when necessary
+    if ( m !== this.value ) {
+      this.value = m;
+    }
+    var word = this.value;
 
     var diff_added = word.subtract( _lastInput );
     if ( diff_added ) {
