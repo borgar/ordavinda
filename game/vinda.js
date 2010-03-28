@@ -362,6 +362,7 @@ jQuery(function($){
         // prepare the words
         $( '#board' ).hide();
         W = this.w = { 6:{}, 5:{}, 4:{}, 3:{} };
+        currentLevel.words.natural_sort();
         for (var i=0; i<currentLevel.words.length; i++) {
             var l = currentLevel.words[i].length;
             W[ l ][ currentLevel.words[i] ] = {};

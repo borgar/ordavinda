@@ -88,6 +88,69 @@
     return this;
   };
   
+  
+  /* Natural sort with extended alphabet suport
+   * 
+   * ['c1234á2345','c11234á2345','c1234a2345'].natural_sort()
+   *    // => ["c1234a2345", "c1234á2345", "c11234á2345"]
+   *
+   */
+  var ns_order = 'aàáâãäåbcçdðeèéêëfghiìíîïjklmnñoòóôõpqrsšƒßtuùúûüvwxyÿýzžþæöø';
+  var ns_alpha = new RegExp( '^[' + ns_order + ']$', 'i' );
+  function ns_chunker ( s ) {
+    var bits = [],
+        s = String( s ).toLowerCase().split( '' ),
+        c = '',
+        ch;
+    while ( s.length ) {
+      ch = s.pop();
+      if ( /^(-?(\d*\.)?\d+)$/.test( ch + c ) ) {
+        c = ch + c;
+      }
+      else {
+        c && bits.unshift( parseFloat( c ) );
+        bits.unshift( ch );
+        c = '';
+      }
+    }
+    c && bits.unshift( parseFloat( c ) );
+    return bits;
+  }
+  
+  function natural_sort ( a, b ) {
+    var c = ns_chunker( a ),
+        d = ns_chunker( b ),
+        l = Math.max( c.length, d.length ),
+        i = -1
+        ;
+    while ( ++i < l ) {
+      var A = c[ i ] || 0,
+          B = d[ i ] || 0
+          ;
+      if ( typeof( A ) === 'number' && typeof( B ) === 'string' ) {
+        return -1;
+      }
+      else if ( typeof( A ) === 'string' && typeof( B ) === 'number' ) {
+        return 1;
+      }
+      if ( ns_alpha.test( A ) && ns_alpha.test( B ) ) {
+        A = ns_order.indexOf( A );
+        B = ns_order.indexOf( B );
+      }
+      if ( A < B ) {
+        return -1;
+      }
+      else if ( A > B ) {
+        return 1;
+      }
+    }
+    return 0;
+  }
+  
+  Array.prototype.natural_sort = function () {
+    return this.sort( natural_sort );
+  }
+
 
   /* Escape regular expression operators in a string for safe inclusion in compiled expressions.
    *
@@ -104,7 +167,7 @@
    * 
    * RegExp.compile( '[a-z]+', 'g' )  // => `/[a-z]+/g+`
    */
-  _regexp_cache = {};
+  var _regexp_cache = {};
   RegExp.compile = function ( r, p ) {
     return ( _regexp_cache[r] = _regexp_cache[r] || new RegExp( r, p || '' ) );
   };
