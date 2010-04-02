@@ -186,7 +186,7 @@ jQuery(function($){
       if ( animate !== false ) {
         e.animate({
             'left': [i * 40, animateYAxis ? 'easeOutBack' : 'easeOutElastic' ], // easeOutElastic, easeOutBack
-            'top': (animateYAxis ? [0, ( Math.random() > 0.5 ? 'dip' : 'dap')] : 0),
+            'top': (animateYAxis ? [0, ( Math.random() > 0.5 ? 'dip' : 'dap')] : 0)
           },
           shuffleTime,
           function () {
