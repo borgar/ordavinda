@@ -41,7 +41,7 @@ jQuery(function($){
 
   function lock () {
     __lock = true;
-    inp.attr( 'disabled', true );
+    inp.blur().attr( 'disabled', true );
     $( '#word_recall, #word_shuffle, #word_enter, #word_clear' ).attr( 'disabled', true );
   }
   
@@ -336,7 +336,7 @@ jQuery(function($){
     $( '#time em' ).text( formatTime( 0 ) );
     $( '#score strong' ).text( score );
     $( '#message strong' ).text( '' );
-    inp.val( '' ).attr( 'disabled', true );
+    inp.blur().val( '' ).attr( 'disabled', true );
     _lastInput = '';
     
     // clear old gameitems
