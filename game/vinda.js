@@ -12,6 +12,7 @@ jQuery(function($){
   var dict_url = "http://bin.arnastofnun.is/leit.php?q=%s&ordmyndir=on";
 
   var score = 0;
+  var levelsList = [];
   var levelsPlayed = [];
   var currentLevel = null;
 
@@ -349,8 +350,9 @@ jQuery(function($){
     showMessage( 'Sæki orðasafn...' );
     lock();
 
+    levelsList.unshift( levelsList.pop() );
     $.ajax({
-      url: 'level/?played=' + levelsPlayed.join(','),
+      url: 'level/%s.json?played=%s&score=%s'.format( levelsList[0], levelsPlayed.join(','), score ),
       dataType: 'json',
       success: function ( r ) {
           
@@ -597,7 +599,19 @@ jQuery(function($){
   });
 
 
-  // start the game
-  setTimeout(function () { newLevel(); }, 1);
+  $.ajax({
+    url: 'level/list.json',
+    dataType: 'json',
+    success: function ( r ) {
+      // register level list
+      levelsList = r.levels.shuffle();
+      // start the game
+      newLevel();
+    },
+    error: function () {
+      // whoops!
+      $('#game').before('<p class="error">Villa: Get ekki sótt upplýsingar um borð.</p>')
+    }
+  });
 
 });
