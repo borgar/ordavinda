@@ -35,6 +35,13 @@ hr { display : none; }
 #game:after { display:block; clear:both; content:"."; visibility:hidden; font-size:1px; height:0; }
 
 
+.error {
+  font-weight : bold;
+  border : 2px dotted red;
+  background : #ffc;
+  padding : 10px 20px;
+}
+
 .stats {
   font-size : 18px;
   height : 40px;
@@ -344,6 +351,7 @@ a.char:hover b {
   left : 0px;
   padding : 40px;
   z-index: 20;
+  display : none;
 }
 #help .wrap {
   border : 2px solid #fff;
