@@ -1,6 +1,8 @@
 # encoding: UTF-8
+from __future__ import with_statement
 import sys
 import random
+import shutil
 
 usage = """
 Use it like this:
@@ -39,6 +41,7 @@ def build_levels( filename ):
     keywords = [ w for w in words if len(w) == 6 ]
 
     json_template = u'{ "key":"%s", "words":["%s"] }'
+    count = 1;
     skip = {}
     for key in keywords:
         if key not in skip:
@@ -48,10 +51,16 @@ def build_levels( filename ):
             # only use levels where number of words is >=10 and <=50
             if len(found) >= 10 and len(found) <= 50:
                 level = json_template % ( key, '","'.join( found ) )
-                print level.encode( 'UTF-8' )
+                with open( u'game/level/level%s.json' % count, 'w' ) as f:
+                    f.write( level.encode( 'UTF-8' ) )
+                count += 1
+    with open( u'game/level/levels.json', 'w' ) as f:
+        f.write(
+            ( u'{ "available": %d }' % (count, count)
+        ).encode( 'UTF-8' ) )
 
 
-if __name__ == '__main__':    
+if __name__ == '__main__':
     if len(sys.argv) < 1:
         print usage
         sys.exit(2)

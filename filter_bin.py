@@ -27,7 +27,7 @@ def filter_bin ( filename ):
         word = unicode( word, encoding='UTF-8' )
         if len( word ) >= 3 and len( word ) <= 6 and category not in ['ism','örn','göt','fyr','föð','móð','bibl','lönd']:
             lc = lowercase( word )
-            if lc not in words:
+            if lc not in words and '-' not in word:
                 if lc == word:
                     words[ lc ] = lc
                     print word.encode('UTF-8')
