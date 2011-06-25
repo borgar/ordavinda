@@ -352,7 +352,7 @@ jQuery(function($){
 
     levelsList.unshift( levelsList.pop() );
     $.ajax({
-      url: 'level/%s.json?played=%s&score=%s'.format( levelsList[0], levelsPlayed.join(','), score ),
+      url: 'level/level%s.json?played=%s&score=%s'.format( levelsList[0], levelsPlayed.join(','), score ),
       dataType: 'json',
       success: function ( r ) {
           
@@ -600,11 +600,14 @@ jQuery(function($){
 
 
   $.ajax({
-    url: 'level/list.json',
+    url: 'level/levels.json',
     dataType: 'json',
     success: function ( r ) {
-      // register level list
-      levelsList = r.levels.shuffle();
+      // build a random level list
+      for (var i=0; i<r.available; i++) {
+        levelsList.push( i+1 );
+      }
+      levelsList = levelsList.shuffle();
       // start the game
       newLevel();
     },

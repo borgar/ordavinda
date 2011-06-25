@@ -55,9 +55,7 @@ def build_levels( filename ):
                     f.write( level.encode( 'UTF-8' ) )
                 count += 1
     with open( u'game/level/levels.json', 'w' ) as f:
-        f.write(
-            ( u'{ "available": %d }' % (count, count)
-        ).encode( 'UTF-8' ) )
+        f.write( ( u'{ "available": %d }' % count ).encode( 'UTF-8' ) )
 
 
 if __name__ == '__main__':
