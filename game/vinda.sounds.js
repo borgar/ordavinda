@@ -6,31 +6,31 @@ if ( window.soundManager ) {
 
     soundRegistry.fail = soundManager.createSound({
       id: 'bonk',
-      url: 'sound/fail.mp3',
+      url: 'sound/bonk.mp3',
       volume: 50
     });
 
     soundRegistry.match = soundManager.createSound({
       id: 'fingerplop',
-      url: 'sound/match.mp3',
+      url: 'sound/fingerplop.mp3',
       volume: 50
     });
 
     soundRegistry.passed = soundManager.createSound({
       id: 'bell_tree',
-      url: 'sound/passed.mp3',
+      url: 'sound/bell_tree.mp3',
       volume: 50
     });
 
     soundRegistry.tick = soundManager.createSound({
       id: 'clock',
-      url: 'sound/tick.mp3',
+      url: 'sound/clock.mp3',
       volume: 40
     });
 
     soundRegistry.gameover = soundManager.createSound({
       id: 'chime',
-      url: 'sound/gameover.mp3',
+      url: 'sound/chime.mp3',
       volume: 50
     });
 
