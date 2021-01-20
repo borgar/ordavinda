@@ -9,7 +9,7 @@
  */
 jQuery(function($){
 
-  var dict_url = "http://bin.arnastofnun.is/leit/?q=%s&ordmyndir=on";
+  var dict_url = "https://bin.arnastofnun.is/leit/beygingarmynd/%s";
 
   var score = 0;
   var levelsList = [];
