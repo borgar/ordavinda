@@ -59,7 +59,7 @@
     
       // Because a new game is simply a reload, sound state is stored in a cookie
       // so that users' selection sticks across games.
-      var on = $.cookie( 'sounds' );
+      var on = $.cookie( 'ordavinda-sounds' );
 
       // Add UI to enable/disable sounds:
       var container = $( '<div id="sounds"></div>' ).appendTo( $('#top') );
@@ -69,7 +69,7 @@
 
       // Save sound preference
       snd.click(function () {
-        $.cookie( 'sounds', $( this ).attr('checked') );
+        $.cookie( 'ordavinda-sounds', $( this ).attr('checked') );
       });
 
       // The game provides custom events which are hooked here and used as sounds triggers

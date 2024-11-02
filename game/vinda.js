@@ -12,6 +12,7 @@ jQuery(function($){
   var dict_url = "http://bin.arnastofnun.is/leit.php?q=%s&ordmyndir=on";
 
   var score = 0;
+  var highscore = parseInt( $.cookie( 'ordavinda-highscore' ), 10 ) || 0;
   var levelsList = [];
   var levelsPlayed = [];
   var currentLevel = null;
@@ -250,7 +251,8 @@ jQuery(function($){
         if ( isCleared() ) {
           __game_over = true;
           lock();
-          score += bonusPoints;   // bonus points for level completeness
+          // bonus points for level completeness
+          score += bonusPoints;
           $( '#score strong' ).text( score );
           //  add key to played list
           levelsPlayed.push( currentLevel.key );
@@ -278,6 +280,14 @@ jQuery(function($){
 
       // expose the words
       showPermutations( true );
+
+      // award highscore if user has cleared it
+      if ( score && score > highscore ) {
+        highscore = score;
+        // show it
+        $( '#score small' ).show().text( score );
+        $.cookie( 'ordavinda-highscore', score, { expires:365 } );
+      }
 
       // if level is solved: 
       if ( isSolved() ) {
@@ -336,6 +346,9 @@ jQuery(function($){
     $( '#leveldone' ).hide();
     $( '#time em' ).text( formatTime( 0 ) );
     $( '#score strong' ).text( score );
+    $( '#score small' )
+            .css( 'display', highscore ? '' : 'none' )
+            .text( Math.max( highscore, score ) );
     $( '#message strong' ).text( '' );
     inp.blur().val( '' ).attr( 'disabled', true );
     _lastInput = '';

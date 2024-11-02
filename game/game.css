@@ -60,6 +60,11 @@ hr { display : none; }
   font-style : normal;
   font-weight : normal;
 }
+.stats small {
+  font-size: .6em;
+  color: #888;
+  padding-left: .5em;
+}
 #time {
   float : right;
 }
