@@ -1,12 +1,7 @@
+_
 .DS_Store
 SHsnid.csv*
+Storasnid_allt/
 dictionary.txt
-game/level/level1*.json
-game/level/level2*json
-game/level/level3*json
-game/level/level4*json
-game/level/level5*json
-game/level/level6*json
-game/level/level7*json
-game/level/level8*json
-game/level/level9*json
+node_modules/
+todo.txt

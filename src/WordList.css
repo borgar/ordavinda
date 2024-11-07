@@ -1,0 +1,73 @@
+:root {
+  --char-size: 20px;
+  --word-font-size: 15px;
+}
+
+@media (max-width: 400px) {
+  :root {
+    --char-size: 17px;
+    --word-font-size: 14px;
+  }
+}
+
+@media (max-width: 350px) {
+  :root {
+    --char-size: 16px;
+    --word-font-size: 13px;
+  }
+}
+
+@media (max-width: 320px) {
+  :root {
+    --char-size: 14px;
+    --word-font-size: 12px;
+  }
+}
+
+.word {
+  white-space: nowrap;
+  position: relative;
+  line-height: var(--char-size);
+}
+
+.wd {
+  display: inline-flex;
+  margin-right: -1px;
+  text-decoration: none;
+}
+
+.word .char {
+  vertical-align: top;
+  border: 0;
+  background: color-mix(in hsl, var(--background), var(--color) 40%);
+  color: color-mix(in hsl, var(--background), var(--color) 5%);
+  box-sizing: border-box;
+  font-size: var(--word-font-size);
+  font-weight: bold;
+  display: inline-block;
+  text-align: center;
+  height: var(--char-size);
+  line-height: var(--char-size);
+  width: var(--char-size);
+/*  cursor: pointer;*/
+}
+
+.word .char + .char {
+  margin-left: 1px;
+}
+
+
+.word.found .char {
+  background: var(--found);
+  color: var(--color);
+}
+
+.ws6 .wd {
+  outline: 1px solid color-mix(in hsl, var(--background), var(--color) 70%);
+}
+
+.exposed .char {
+  border: 0;
+  color: color-mix(in hsl, var(--background), var(--color) 40%);
+  background: color-mix(in hsl, var(--background), var(--color) 5%);
+}

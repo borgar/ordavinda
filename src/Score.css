@@ -1,0 +1,12 @@
+.highscore {
+  opacity: 0.5;
+}
+.highscore::before {
+  content: '•';
+  padding: 0 8px 0 4px;
+}
+
+.highscore small {
+  outline: 1px solid red;
+  font-size: 15px;
+}

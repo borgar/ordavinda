@@ -1,0 +1,69 @@
+:root {
+  --background: #e6e6e6;
+  --color: #000;
+  --found: lime;
+  --rule: color-mix(in hsl, var(--background), var(--color) 50%);
+  --button-background: #fff;
+}
+
+html {
+  height: -webkit-fill-available;
+}
+
+body {
+  font-size: 20px;
+  font-family: sans-serif;
+  padding: 0;
+  margin: 0;
+  background: #e6e6e6;
+  color: #000;
+  transition: background .3s, color .3s;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  overflow: hidden;
+}
+
+a {
+  color: currentColor;
+}
+
+button {
+  appearance: none;
+  display: inline-block;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: currentColor;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+body.darkMode {
+  background: #111;
+  color: #eee;
+  --background: #111;
+  --color: #eee;
+  --found: green;
+  --button-background: #333;
+}
+
+.game {
+  padding: 10px 10px;
+  margin: 0 auto;
+  max-width: 500px;
+  min-height: 100vh;
+/*  min-height: -webkit-fill-available;*/
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: unset;
+}
+
+/*
+@media (max-width: 400px) {
+  .game {
+    padding-bottom: 0;
+  }
+}
+*/

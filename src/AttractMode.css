@@ -1,0 +1,68 @@
+.attract {
+  flex-grow: 1;
+  flex-shrink: 1;
+  font-size: 1rem;
+  position: relative;
+  font-size: 1rem;
+}
+
+@media (max-width: 380px) {
+  .attract {
+    font-size: .92rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .attract {
+    font-size: .88rem;
+  }
+}
+
+.attract h3 {
+  margin-top: 10px;
+  margin-bottom: 1rem;
+}
+
+.attract p {
+  margin-top: .7rem;
+  margin-bottom: .7rem;
+}
+
+.attract hr {
+  margin-top: 2rem;
+  margin-bottom: .7rem;
+  border: 0;
+  border-top: 1px solid currentColor;
+}
+
+.attract .about {
+  font-size: .92em;
+  opacity: .7;
+  padding: .5em 1em;
+}
+
+.scrollwrapper {
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  scrollbar-color: color-mix(in hsl, var(--background), var(--color) 30%) var(--background);
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  font-size: 1em;
+  border: 1px solid color-mix(in hsl, var(--background), var(--color) 20%);
+  padding: 6px;
+  vertical-align: top;
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+

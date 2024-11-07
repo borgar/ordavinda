@@ -1,0 +1,8 @@
+{
+    "name": "Orðavinda",
+    "short_name": "Orðavinda",
+    "theme_color": "#e6e6e6",
+    "background_color": "#e6e6e6",
+    "description": "Orðavindan er stórskemmtilegur orðaleikur. Leikmanni er úthlutað sex bókstöfum sem geta myndað tiltekinn fjölda orðmynda. Markmið leiksins er að vinna sér inn sem flest stig með því að finna sem flestar þessara orðmynda áður en tíminn rennur út.",
+    "display": "standalone",
+}

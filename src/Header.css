@@ -1,0 +1,24 @@
+.header {
+  position: relative;
+  border-bottom: 2px solid color-mix(in hsl, var(--background), var(--color) 50%);
+
+  h1 {
+    margin: 0;
+    font-size: 30px;
+    padding-bottom: 5px;
+  }
+
+  .buttons {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  button {
+    cursor: pointer;
+    background: none;
+    border: 0;
+    padding: 0;
+    margin-left: 20px;
+  }
+}
