@@ -5,7 +5,7 @@ import { AttractMode } from './AttractMode.jsx';
 import css from './App.css';
 
 export function App () {
-  const [ playing, setPlaying ] = useState(true);
+  const [ playing, setPlaying ] = useState(false);
 
   return (
     <div className='game'>

@@ -13,7 +13,6 @@ export class Clock {
 
   off (name, handler) {
     this._events = this._events.filter(d => d.name !== name && d.handler !== handler);
-    console.log('off', this._events.length);
   }
 
   trigger (name, data) {

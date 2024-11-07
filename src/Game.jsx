@@ -178,7 +178,6 @@ export class Game extends React.PureComponent {
       else {
         playSound('match');
       }
-      console.log('score', [ this.state.score, SCORES[guess.length] ]);
       this.setState({
         score: this.state.score + SCORES[guess.length],
         found: [ ...this.state.found, guess ],
