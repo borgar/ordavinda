@@ -6,7 +6,6 @@ export function AttractMode ({ onPlay }) {
   return (
     <div className="attract">
       <div className="scrollwrapper">
-
         <h3>Leikreglur</h3>
 
         <p>Markmið leiksins er að reyna að mynda sem flest orð úr 6 stöfum áður en tíminn rennur út.</p>

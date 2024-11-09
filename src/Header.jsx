@@ -20,7 +20,7 @@ export function Header () {
   const [ darkMode, setDarkMode ] = useState(detectDarkDefault());
 
   useEffect(() => {
-    document.body.classList.toggle('darkMode', darkMode);
+    document.documentElement.classList.toggle('darkMode', darkMode);
   }, [ darkMode ]);
 
   return (

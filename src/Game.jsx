@@ -321,7 +321,7 @@ export class Game extends React.PureComponent {
                 className="tileButton"
                 onClick={this.onShuffle}
                 >
-                <Icon name="swap_horiz" />
+                <Icon name="vinda" />
               </Button>
 
               <div id="letters">

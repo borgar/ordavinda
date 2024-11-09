@@ -8,12 +8,12 @@ export function App () {
   const [ playing, setPlaying ] = useState(false);
 
   return (
-    <div className='game'>
+    <>
       <Header />
       {playing
         ? <Game onExit={() => setPlaying(false)} />
         : <AttractMode onPlay={() => setPlaying(true)} />
       }
-    </div>
+    </>
   );
 }

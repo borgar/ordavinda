@@ -6,8 +6,16 @@
   --button-background: #fff;
 }
 
+:root.darkMode {
+  --background: #111;
+  --color: #eee;
+  --found: green;
+  --button-background: #333;
+}
+
 html {
-  height: -webkit-fill-available;
+  background: var(--background);
+  color: var(--color);
 }
 
 body {
@@ -15,11 +23,9 @@ body {
   font-family: sans-serif;
   padding: 0;
   margin: 0;
-  background: #e6e6e6;
-  color: #000;
+  background: var(--background);
+  color: var(--color);
   transition: background .3s, color .3s;
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
   overflow: hidden;
 }
 
@@ -38,21 +44,13 @@ button {
   cursor: pointer;
 }
 
-body.darkMode {
-  background: #111;
-  color: #eee;
-  --background: #111;
-  --color: #eee;
-  --found: green;
-  --button-background: #333;
-}
 
-.game {
+#app {
   padding: 10px 10px;
   margin: 0 auto;
   max-width: 500px;
   min-height: 100vh;
-/*  min-height: -webkit-fill-available;*/
+  min-height: calc(100dvh);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -60,10 +58,3 @@ body.darkMode {
   transition: unset;
 }
 
-/*
-@media (max-width: 400px) {
-  .game {
-    padding-bottom: 0;
-  }
-}
-*/
